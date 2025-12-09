@@ -27,6 +27,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/helen168168/my-free-vps/myvps:latest
+          tags: ghcr.io/${{ github.repository }}/myvps:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
