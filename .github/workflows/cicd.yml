@@ -1,5 +1,4 @@
 name: Build and Push Docker Image
-
 on:
   push:
     branches: [ main ]
@@ -11,6 +10,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Normalize repository name to lowercase
+        run: echo "REPO_LC=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -27,6 +29,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}/myvps:latest
+          tags: ghcr.io/${{ env.REPO_LC }}/myvps:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
