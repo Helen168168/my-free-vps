@@ -1,4 +1,4 @@
-Do# 示例1：最简单的 SSH 远程服务器（最常用）
+
 FROM ubuntu:24.04
 RUN apt update && apt install -y openssh-server curl wget nano htop && \
     mkdir -p /var/run/sshd && \
